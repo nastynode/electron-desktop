@@ -13,6 +13,31 @@ const defaultForm: DoForm = {
       placeholder: 'Enter your name',
       required: true,
     },
+    {
+      id: 'field-2',
+      type: DoFormFieldType.SELECT,
+      label: 'Country',
+      options: [
+        { value: 'US', label: 'United States' },
+        { value: 'CA', label: 'Canada' },
+        { value: 'UK', label: 'United Kingdom' },
+      ],
+      required: true,
+    },
+    {
+      id: 'field-3',
+      type: DoFormFieldType.DATE,
+      label: 'Date of Birth',
+      subtitle: 'Select your date of birth',
+      required: true,
+      defaultValue: new Date().toISOString().split('T')[0], // Default to today
+    },
+    {
+      id: 'field-4',
+      type: DoFormFieldType.TEXTAREA,
+      label: 'Comments',
+      placeholder: 'Enter your comments here',
+    },
   ],
 };
 

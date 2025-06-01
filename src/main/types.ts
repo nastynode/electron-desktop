@@ -6,10 +6,10 @@ export type DoForm = {
 };
 
 export enum DoFormFieldType {
-  TEXT = 'TEXT',
+  TEXT = 'TEXT', //
   NUMBER = 'NUMBER',
   DATE = 'DATE',
-  SELECT = 'SELECT',
+  SELECT = 'SELECT', //
   CHECKBOX = 'CHECKBOX',
   RADIO = 'RADIO',
   TEXTAREA = 'TEXTAREA',
@@ -17,13 +17,18 @@ export enum DoFormFieldType {
   PHONE = 'PHONE',
 }
 
+export type DoFormFieldOption = {
+  label: string;
+  value: string | number | boolean;
+};
+
 export type DoFormField = {
   id: string; //each one needs a unique ID so that we can update the value of the field in the parent object
   type: DoFormFieldType;
   label: string;
   subtitle?: string;
   placeholder?: string;
-  options?: string[]; // For SELECT, RADIO, CHECKBOX
+  options?: DoFormFieldOption[]; // For SELECT, RADIO, CHECKBOX
   required?: boolean;
   defaultValue?: string | number | boolean; // For TEXT, NUMBER, CHECKBOX
   validation?: [

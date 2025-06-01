@@ -5,6 +5,8 @@ import {
   DoFormFieldType,
 } from '../../../main/types';
 import DoFormTextField from './DoFormTextField';
+import DoFormSelectField from './DoFormSelectField';
+import DoFormDateField from './DoFormDateField';
 
 type FormState = Record<string, string | number | boolean>;
 
@@ -36,6 +38,10 @@ const DoFormFieldRenderer = ({
   switch (field.type) {
     case DoFormFieldType.TEXT:
       return <DoFormTextField formFieldProps={field} setValue={setValue} />;
+    case DoFormFieldType.SELECT:
+      return <DoFormSelectField formFieldProps={field} setValue={setValue} />;
+    case DoFormFieldType.DATE:
+      return <DoFormDateField formFieldProps={field} onSelect={setValue} />;
     default:
       return <>Form field type '{field.type}' not yet implemented</>;
   }
