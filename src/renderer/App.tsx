@@ -1,40 +1,38 @@
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
-import icon from '../../assets/icon.svg';
 import './App.css';
+import { JSX, useState } from 'react';
+import FormView from './containers/FormView';
 
-function Hello() {
+const views = {
+  VIEW: 'VIEW',
+  CREATE: 'CREATE',
+  LISTEN: 'LISTEN',
+};
+
+function Layout() {
+  const [view, setView] = useState<string>('VIEW');
+  let content: JSX.Element = <FormView />;
+
+  switch (view) {
+    case views.VIEW:
+      content = <FormView />;
+      break;
+    case views.CREATE:
+      content = <>Create form</>;
+      break;
+    case views.LISTEN:
+      content = <>Listen form</>;
+      break;
+  }
+
   return (
-    <div>
-      <div className="Hello">
-        <img width="200" alt="icon" src={icon} />
+    <div className="layout">
+      <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
+        <button onClick={() => setView(views.VIEW)}>View</button>
+        <button onClick={() => setView(views.CREATE)}>Create</button>
+        <button onClick={() => setView(views.LISTEN)}>Listen</button>
       </div>
-      <h1>electron-react-boilerplate</h1>
-      <div className="Hello">
-        <a
-          href="https://electron-react-boilerplate.js.org/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button type="button">
-            <span role="img" aria-label="books">
-              📚
-            </span>
-            Read our docs
-          </button>
-        </a>
-        <a
-          href="https://github.com/sponsors/electron-react-boilerplate"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button type="button">
-            <span role="img" aria-label="folded hands">
-              🙏
-            </span>
-            Donate
-          </button>
-        </a>
-      </div>
+      {content}
     </div>
   );
 }
@@ -43,7 +41,7 @@ export default function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Hello />} />
+        <Route path="/" element={<Layout />} />
       </Routes>
     </Router>
   );
