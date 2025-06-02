@@ -29,14 +29,40 @@ const defaultForm: DoForm = {
       type: DoFormFieldType.DATE,
       label: 'Date of Birth',
       subtitle: 'Select your date of birth',
-      required: true,
-      defaultValue: new Date().toISOString().split('T')[0], // Default to today
+      required: true, // Default to today
     },
     {
       id: 'field-4',
-      type: DoFormFieldType.TEXTAREA,
-      label: 'Comments',
+      type: DoFormFieldType.CHECKBOX,
+      label: 'Option 1',
+      subtitle: 'This is an optional checkbox',
+      defaultValue: true,
+    },
+    {
+      id: 'field-5',
+      type: DoFormFieldType.CHECKBOX,
+      label: 'Option 2',
+    },
+    {
+      id: 'field-6',
+      type: DoFormFieldType.NUMBER,
+      label: 'Quantity',
       placeholder: 'Enter your comments here',
+      required: false,
+    },
+    {
+      id: 'field-7',
+      type: DoFormFieldType.EMAIL,
+      label: 'Email',
+      placeholder: 'Enter your email address',
+      required: true,
+    },
+    {
+      id: 'field-8',
+      type: DoFormFieldType.PHONE,
+      label: 'Phone Number',
+      placeholder: 'Enter your phone number',
+      required: false,
     },
   ],
 };

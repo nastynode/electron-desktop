@@ -3,9 +3,11 @@ import { DoFormField } from '../../../main/types';
 const DoFormTextField = ({
   formFieldProps,
   setValue,
+  variant = 'text',
 }: {
   formFieldProps: DoFormField;
   setValue: (newValue: string) => void;
+  variant?: 'textarea' | 'email' | 'tel' | 'number' | 'text';
 }) => {
   return (
     <div
@@ -18,7 +20,7 @@ const DoFormTextField = ({
       </label>
       {formFieldProps.subtitle && <small>{formFieldProps.subtitle}</small>}
       <input
-        type="text"
+        type={variant ?? 'text'}
         placeholder={formFieldProps.placeholder}
         defaultValue={formFieldProps.defaultValue as string}
         onChange={(e) => setValue(e.target.value)}

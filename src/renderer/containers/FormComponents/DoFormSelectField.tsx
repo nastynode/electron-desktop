@@ -19,8 +19,11 @@ const DoFormSelectField = ({
       <select
         id={formFieldProps.id}
         onChange={(e) => setValue(e.target.value)}
-        defaultValue={formFieldProps.defaultValue?.toLocaleString()}
+        required={formFieldProps.required}
       >
+        <option value="" disabled selected hidden>
+          Select an option
+        </option>
         {formFieldProps.options?.map((option, i) => (
           <option key={i} value={option.value.toLocaleString()}>
             {option.label}

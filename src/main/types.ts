@@ -8,7 +8,7 @@ export type DoForm = {
 export enum DoFormFieldType {
   TEXT = 'TEXT', //
   NUMBER = 'NUMBER',
-  DATE = 'DATE',
+  DATE = 'DATE', //
   SELECT = 'SELECT', //
   CHECKBOX = 'CHECKBOX',
   RADIO = 'RADIO',

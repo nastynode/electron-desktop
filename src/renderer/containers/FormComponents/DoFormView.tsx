@@ -7,6 +7,7 @@ import {
 import DoFormTextField from './DoFormTextField';
 import DoFormSelectField from './DoFormSelectField';
 import DoFormDateField from './DoFormDateField';
+import DoFormCheckBox from './DoFormCheckBox';
 
 type FormState = Record<string, string | number | boolean>;
 
@@ -42,6 +43,32 @@ const DoFormFieldRenderer = ({
       return <DoFormSelectField formFieldProps={field} setValue={setValue} />;
     case DoFormFieldType.DATE:
       return <DoFormDateField formFieldProps={field} onSelect={setValue} />;
+    case DoFormFieldType.CHECKBOX:
+      return <DoFormCheckBox formFieldProps={field} onSelect={setValue} />;
+    case DoFormFieldType.NUMBER:
+      return (
+        <DoFormTextField
+          formFieldProps={field}
+          setValue={setValue}
+          variant="number"
+        />
+      );
+    case DoFormFieldType.EMAIL:
+      return (
+        <DoFormTextField
+          formFieldProps={field}
+          setValue={setValue}
+          variant="email"
+        />
+      );
+    case DoFormFieldType.PHONE:
+      return (
+        <DoFormTextField
+          formFieldProps={field}
+          setValue={setValue}
+          variant="tel"
+        />
+      );
     default:
       return <>Form field type '{field.type}' not yet implemented</>;
   }
