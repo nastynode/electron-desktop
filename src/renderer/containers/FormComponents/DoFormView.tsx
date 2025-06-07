@@ -8,6 +8,7 @@ import DoFormTextField from './DoFormTextField';
 import DoFormSelectField from './DoFormSelectField';
 import DoFormDateField from './DoFormDateField';
 import DoFormCheckBox from './DoFormCheckBox';
+import DoFormRadialButtons from './DoFormRadialButtons';
 
 type FormState = Record<string, string | number | boolean>;
 
@@ -45,6 +46,8 @@ const DoFormFieldRenderer = ({
       return <DoFormDateField formFieldProps={field} onSelect={setValue} />;
     case DoFormFieldType.CHECKBOX:
       return <DoFormCheckBox formFieldProps={field} onSelect={setValue} />;
+    case DoFormFieldType.RADIO:
+      return <DoFormRadialButtons formFieldProps={field} setValue={setValue} />;
     case DoFormFieldType.NUMBER:
       return (
         <DoFormTextField
@@ -82,7 +85,11 @@ const DoFormView = ({ doForm }: { doForm: DoFormView }) => {
   };
 
   return (
-    <form className="do-form" onSubmit={handleSubmit}>
+    <form
+      className="do-form"
+      onSubmit={handleSubmit}
+      style={{ overflowY: 'scroll' }}
+    >
       <h1>{doForm.title}</h1>
       <p>{doForm.description}</p>
       {doForm.fields.map((field) => (

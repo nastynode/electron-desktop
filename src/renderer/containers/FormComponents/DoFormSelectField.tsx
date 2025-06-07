@@ -20,8 +20,9 @@ const DoFormSelectField = ({
         id={formFieldProps.id}
         onChange={(e) => setValue(e.target.value)}
         required={formFieldProps.required}
+        defaultValue="default"
       >
-        <option value="" disabled selected hidden>
+        <option value="default" disabled hidden>
           Select an option
         </option>
         {formFieldProps.options?.map((option, i) => (
